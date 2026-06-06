@@ -724,6 +724,13 @@
             text-align: right;
         }
 
+        .bubble img {
+            max-width: 220px;
+            border-radius: 8px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
         .typing-indicator {
             align-self: flex-start;
             display: none;
@@ -1114,7 +1121,7 @@
                             <div class="chat-header-avatar" id="chatHeaderAvatar"></div>
                             <div>
                                 <div class="chat-header-name" id="chatHeaderName"></div>
-                                <div class="chat-header-status">En ligne</div>
+                                <div class="chat-header-status" id="chatHeaderPhone"></div>
                             </div>
                         </div>
                         <div class="chat-messages" id="chatMessages"></div>
@@ -1147,7 +1154,7 @@
         <div class="notif-icon">🔑</div>
         <div class="notif-body">
             <div class="notif-title">Rappel</div>
-            <div class="notif-text">Hé oublie pas que t'as mis ta clé en G, ce serait dommage de pas la retrouver encore
+            <div class="notif-text">Hé oublie pas que t'as mis ta clé en G6, ce serait dommage de pas la retrouver encore
                 une fois"</div>
         </div>
         <button class="notif-close"
@@ -1200,11 +1207,11 @@
         function openModal(id) { document.getElementById(id).classList.add('open'); }
         function closeModal(id) {
             document.getElementById(id).classList.remove('open');
-
             if (id === 'wifiModal') {
                 stopWifiSound();
             }
         }
+
         // ===== WIFI =====
         let wifiConnected = false;
         let wifiTimer = null;
@@ -1219,10 +1226,8 @@
 
         function playWifiLoop() {
             if (!shouldPlayWifiSound()) return;
-
             audio.currentTime = 0;
             audio.play().catch(() => { });
-
             audio.onended = () => {
                 if (shouldPlayWifiSound()) {
                     wifiTimer = setTimeout(playWifiLoop, 10000);
@@ -1238,10 +1243,8 @@
 
         function openWifiModal() {
             if (wifiConnected) return;
-
             openModal('wifiModal');
             playWifiLoop();
-
             setTimeout(() => document.getElementById('wifiInput').focus(), 200);
         }
 
@@ -1249,9 +1252,7 @@
             const val = document.getElementById('wifiInput').value;
             if (normalize(val) === normalize('dorélasol')) {
                 wifiConnected = true;
-
-                stopWifiSound(); // 👈 IMPORTANT
-
+                stopWifiSound();
                 closeModal('wifiModal');
                 document.getElementById('wifiOff').style.display = 'none';
                 document.getElementById('wifiOn').style.display = 'block';
@@ -1270,7 +1271,7 @@
 
         // ===== PIN / APP LOCK =====
         let pinValue = '';
-        const PIN_CODE = '123456';
+        const PIN_CODE = '139750';
         let msgUnlocked = false;
 
         function pinPress(k) {
@@ -1329,49 +1330,94 @@
 
         // ===== MESSAGING APP DATA =====
         const CONTACTS = [
-            { id: 1, name: 'Contact 1', fullName: 'Alice Martin', initial: 'A', color: '#e91e63' },
-            { id: 2, name: 'Contact 2', fullName: 'Bruno Leclair', initial: 'B', color: '#ff9800' },
-            { id: 3, name: 'Contact 3', fullName: 'Clara Dufresne', initial: 'C', color: '#9c27b0' },
-            { id: 4, name: 'Contact 4', fullName: 'David Moreau', initial: 'D', color: '#2196f3' },
+            { id: 1, name: 'M. ANDRE',         phone: '07 86 01 17 03', initial: 'A', color: '#e91e63',  reply: null },
+            { id: 2, name: 'M. BELAID',         phone: '06 56 83 48 02', initial: 'B', color: '#ff9800',  reply: null },
+            { id: 3, name: 'Mme COSTA',         phone: '07 90 63 42 51', initial: 'C', color: '#9c27b0',  reply: 'Ha Ha Ha mauvaise pioche les enfants !!! Vous vous êtes bien fait avoir !' },
+            { id: 4, name: 'Mme BOURIOT',       phone: '07 92 14 36 33', initial: 'D', color: '#2196f3',  reply: null, specialReply: true },
+            { id: 5, name: 'Amale AL ALAOUI',   phone: '06 77 43 81 39', initial: 'Am', color: '#00897b', reply: null },
+            { id: 6, name: 'M. ONDARS',         phone: '07 40 08 86 46', initial: 'O', color: '#c62828',  reply: 'Perdu ! Nullos' },
+            { id: 7, name: 'TECHNICIEN',        phone: '07 43 91 00 63', initial: 'T', color: '#546e7a',  reply: 'Ha non je viens pas vous sortir de là, sinon il va me tuer' },
         ];
 
-        const LOREM_MESSAGES = [
-            ["Salut, t'es là ?", true],
-            ["Ouais je suis là, quoi de neuf ?", false],
-            ["J'ai trouvé un truc bizarre dans le couloir...", true],
-            ["Ah ouais ? C'est quoi ?", false],
-            ["Je sais pas trop, ça ressemble à une serrure codée", true],
-            ["Fais gaffe, touche pas à tout", false],
-            ["T'inquiète, je maîtrise 😏", true],
-            ["Bah voyons... dis-moi si tu trouves quelque chose", false],
-            ["Ok je te tiens au courant !", true],
+        // Track which delayed messages have been sent
+        let contact2DelayedSent = false;
+        let contact6DelayedSent = false;
+        // Track if contact 4 special reply sent
+        let contact4ReplySent = false;
+
+        const BELAID_HISTORY = [
+            { text: "Dans quel état est le corps ? T'as pu le faire disparaitre ?", sent: false },
+            { text: "Non pas tout à fait, il reste le squelette, c'est le plus galère à dissoudre mais je fais ça dans la semaine tqt", sent: true },
+            { text: "Ok", sent: false },
+            { text: "Et tu viens au barbecue avec les copains samedi ?", sent: false },
         ];
 
-        // conversations : { contactId: [{text, sent, time}] }
-        let conversations = {};
-        // Initialize contacts 1,2,4 with lorem, contact 3 empty
-        CONTACTS.forEach(c => {
-            if (c.id !== 3) {
-                conversations[c.id] = LOREM_MESSAGES.map(([text, sent]) => ({
-                    text, sent, time: randomTime()
-                }));
-            } else {
-                conversations[c.id] = [];
-            }
-        });
+        const ONDARS_HISTORY = [
+            { text: "C'est complètement tordu ton plan, en plus de lui avoir réglé son compte tu vas te débarrasser de toute une classe… trop cool 😉", sent: false },
+            { text: "Ils ont voulu fouiner et trouver des preuves, je vais le leur faire regretter", sent: true },
+            { text: "J'ai trouvé ça par terre hier, ça doit être à toi", sent: false },
+            { text: '__IMG__', sent: false },
+        ];
 
+        const TECHNICIEN_HISTORY = [
+            { text: "He chef, tu feras gaffe, j'ai un pote chimiste qui m'a dit que les traces de sang se voient toujours avec une lumière UV même quand t'as bien tout laver", sent: false },
+            { text: "Ok je vérifierai si il reste des traces quelques part. Autre chose ?", sent: true },
+            { text: "Et au fait ! J'ai remis mis la clé de ton livre en D4, la perds pas cette fois", sent: false },
+        ];
+
+        function t(h, m) { return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`; }
         function randomTime() {
             const h = Math.floor(Math.random() * 3) + 9;
             const m = Math.floor(Math.random() * 60);
-            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+            return t(h, m);
         }
         function nowTime() {
             const now = new Date();
-            return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+            return t(now.getHours(), now.getMinutes());
         }
+
+        // conversations : { contactId: [{text, sent, time, isImg?}] }
+        let conversations = {};
+
+        function buildHistory(arr) {
+            return arr.map(m => ({ ...m, time: randomTime() }));
+        }
+
+        CONTACTS.forEach(c => { conversations[c.id] = []; });
+        conversations[2] = buildHistory(BELAID_HISTORY);
+        conversations[6] = buildHistory(ONDARS_HISTORY);
+        conversations[7] = buildHistory(TECHNICIEN_HISTORY);
 
         let activeContactId = null;
         let currentTab = 'convs';
+
+        // ===== KEYBOARD SHORTCUTS ctrl+2 and ctrl+6 =====
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === '2') {
+                e.preventDefault();
+                if (!contact2DelayedSent) {
+                    contact2DelayedSent = true;
+                    setTimeout(() => {
+                        const msg = "J'ai effacé la fameuse vidéo de ton téléphone, mais elle est dans les « supprimé récemment », il me fallait ton code alors elle y est encore. Mais pas de panique, tant que personne n'a ton code elle est protégée";
+                        conversations[2].push({ text: msg, sent: false, time: nowTime() });
+                        if (activeContactId === 2) renderMessages();
+                        renderConvList();
+                    }, 2 * 60 * 1000);
+                }
+            }
+            if (e.ctrlKey && e.key === '6') {
+                e.preventDefault();
+                if (!contact6DelayedSent) {
+                    contact6DelayedSent = true;
+                    setTimeout(() => {
+                        const msg = "Le premier cadavre était trop marrant, on aurait dit qu'il pointait un truc en mourant 😊";
+                        conversations[6].push({ text: msg, sent: false, time: nowTime() });
+                        if (activeContactId === 6) renderMessages();
+                        renderConvList();
+                    }, 2 * 60 * 1000);
+                }
+            }
+        });
 
         // ===== TABS =====
         function switchTab(tab) {
@@ -1390,15 +1436,19 @@
             list.innerHTML = '';
             CONTACTS.forEach(c => {
                 const msgs = conversations[c.id] || [];
-                const lastMsg = msgs.length ? msgs[msgs.length - 1].text : 'Aucun message';
+                let lastText = 'Aucun message';
+                if (msgs.length) {
+                    const last = msgs[msgs.length - 1];
+                    lastText = last.isImg ? '📷 Photo' : last.text;
+                }
                 const item = document.createElement('div');
                 item.className = 'conv-item' + (activeContactId === c.id ? ' active' : '');
                 item.innerHTML = `
-      <div class="conv-avatar" style="background:${c.color}">${c.initial}</div>
-      <div class="conv-info">
-        <div class="conv-name">${c.name}</div>
-        <div class="conv-preview">${lastMsg.slice(0, 35)}${lastMsg.length > 35 ? '...' : ''}</div>
-      </div>`;
+                    <div class="conv-avatar" style="background:${c.color}">${c.initial}</div>
+                    <div class="conv-info">
+                        <div class="conv-name">${c.name}</div>
+                        <div class="conv-preview">${lastText.slice(0, 35)}${lastText.length > 35 ? '...' : ''}</div>
+                    </div>`;
                 item.onclick = () => selectContact(c.id);
                 list.appendChild(item);
             });
@@ -1412,11 +1462,11 @@
                 const item = document.createElement('div');
                 item.className = 'contact-item';
                 item.innerHTML = `
-      <div class="contact-avatar" style="background:${c.color}">${c.initial}</div>
-      <div>
-        <div class="contact-name">${c.fullName}</div>
-        <div class="contact-handle">${c.name}</div>
-      </div>`;
+                    <div class="contact-avatar" style="background:${c.color}">${c.initial}</div>
+                    <div>
+                        <div class="contact-name">${c.name}</div>
+                        <div class="contact-handle">${c.phone}</div>
+                    </div>`;
                 item.onclick = () => {
                     if (!conversations[c.id]) conversations[c.id] = [];
                     switchTab('convs');
@@ -1441,6 +1491,7 @@
             ha.style.background = contact.color;
             ha.textContent = contact.initial;
             document.getElementById('chatHeaderName').textContent = contact.name;
+            document.getElementById('chatHeaderPhone').textContent = contact.phone;
 
             renderMessages();
             document.getElementById('chatInput').focus();
@@ -1461,7 +1512,11 @@
                 msgs.forEach(m => {
                     const b = document.createElement('div');
                     b.className = 'bubble ' + (m.sent ? 'sent' : 'recv');
-                    b.innerHTML = `${m.text}<div class="bubble-time">${m.time}</div>`;
+                    if (m.isImg) {
+                        b.innerHTML = `<img src="./static/trad.jpeg" alt="photo"><div class="bubble-time">${m.time}</div>`;
+                    } else {
+                        b.innerHTML = `${m.text}<div class="bubble-time">${m.time}</div>`;
+                    }
                     container.appendChild(b);
                 });
             }
@@ -1489,32 +1544,42 @@
             const text = input.value.trim();
             if (!text) return;
 
-            // Add sent message
             if (!conversations[activeContactId]) conversations[activeContactId] = [];
             conversations[activeContactId].push({ text, sent: true, time: nowTime() });
             input.value = '';
             renderMessages();
             renderConvList();
 
-            // Auto-reply
             const contact = CONTACTS.find(c => c.id === activeContactId);
-            const reply = contact.id === 3 ? "ok j'arrive" : "Tu dis quoi wesh ?";
 
-            // Show typing
-            setTimeout(() => {
-                const ti = document.getElementById('typingIndicator');
-                if (ti) ti.classList.add('visible');
-                const msgs = document.getElementById('chatMessages');
-                if (msgs) msgs.scrollTop = msgs.scrollHeight;
-            }, 400);
+            // Determine reply
+            let replyText = null;
 
-            // Send reply
-            const replyDelay = 1500 + Math.random() * 1000;
-            setTimeout(() => {
-                conversations[activeContactId].push({ text: reply, sent: false, time: nowTime() });
-                renderMessages();
-                renderConvList();
-            }, replyDelay);
+            if (contact.id === 4 && !contact4ReplySent) {
+                if (text.toLowerCase().includes('aide')) {
+                    contact4ReplySent = true;
+                    replyText = "Ha les enfants enfin on a des nouvelles, on envoie quelqu'un vous libérer mais ça peut prendre un peu de temps. Le temps qu'on arrive, il faut que vous trouviez qui a été tué et surtout, il faut trouver l'assassin. Trouvez des preuves !!! On arrive vous chercher !";
+                }
+            } else if (contact.reply) {
+                replyText = contact.reply;
+            }
+
+            if (replyText) {
+                // Show typing
+                setTimeout(() => {
+                    const ti = document.getElementById('typingIndicator');
+                    if (ti) ti.classList.add('visible');
+                    const msgs = document.getElementById('chatMessages');
+                    if (msgs) msgs.scrollTop = msgs.scrollHeight;
+                }, 400);
+
+                const replyDelay = 1500 + Math.random() * 1000;
+                setTimeout(() => {
+                    conversations[activeContactId].push({ text: replyText, sent: false, time: nowTime() });
+                    if (activeContactId === contact.id) renderMessages();
+                    renderConvList();
+                }, replyDelay);
+            }
         }
 
         function handleChatKey(e) {
@@ -1524,8 +1589,15 @@
             }
         }
 
+        // Mark image messages
+        ONDARS_HISTORY.forEach((m, i) => {
+            if (m.text === '__IMG__') {
+                conversations[6][i].isImg = true;
+                conversations[6][i].text = '';
+            }
+        });
+
         // ===== INIT MESSAGING =====
-        // render on modal open
         document.getElementById('msgModal').addEventListener('transitionend', function (e) {
             if (this.classList.contains('open') && e.propertyName === 'opacity') {
                 renderConvList();
@@ -1533,7 +1605,6 @@
             }
         });
 
-        // Also trigger render immediately when opened
         const origOpenModal = openModal;
         window.openModal = function (id) {
             origOpenModal(id);
