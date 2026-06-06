@@ -1320,13 +1320,13 @@
 
         // ===== NOTIFICATION TIMER =====
         let notifTimerStarted = false;
-        function startNotifTimer() {
-            if (notifTimerStarted) return;
-            notifTimerStarted = true;
-            setTimeout(() => {
-                document.getElementById('notification').classList.add('visible');
-            }, 120000);
-        }
+        // function startNotifTimer() {
+        //     if (notifTimerStarted) return;
+        //     notifTimerStarted = true;
+        //     setTimeout(() => {
+        //         document.getElementById('notification').classList.add('visible');
+        //     }, 120000);
+        // }
 
         // ===== MESSAGING APP DATA =====
         const CONTACTS = [
@@ -1393,7 +1393,7 @@
 
         // ===== KEYBOARD SHORTCUTS ctrl+2 and ctrl+6 =====
         document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === '2') {
+            if (e.shiftKey && e.key.toLowerCase() === 'a') {
                 e.preventDefault();
                 if (!contact2DelayedSent) {
                     contact2DelayedSent = true;
@@ -1405,7 +1405,7 @@
                     }, 2 * 60 * 1000);
                 }
             }
-            if (e.ctrlKey && e.key === '6') {
+            if (e.shiftKey && e.key.toLowerCase() === 'z') {
                 e.preventDefault();
                 if (!contact6DelayedSent) {
                     contact6DelayedSent = true;
