@@ -38,7 +38,6 @@
             user-select: none;
         }
 
-        /* ========== LOCK SCREEN ========== */
         #lockScreen {
             position: fixed;
             inset: 0;
@@ -157,32 +156,15 @@
             transition: opacity 0.2s, transform 0.1s;
         }
 
-        .lock-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        .lock-btn:active {
-            transform: translateY(0);
-        }
+        .lock-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .lock-btn:active { transform: translateY(0); }
 
         @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0)
-            }
-
-            25% {
-                transform: translateX(-6px)
-            }
-
-            75% {
-                transform: translateX(6px)
-            }
+            0%, 100% { transform: translateX(0) }
+            25% { transform: translateX(-6px) }
+            75% { transform: translateX(6px) }
         }
 
-        /* ========== DESKTOP ========== */
         #desktop {
             position: fixed;
             inset: 0;
@@ -194,9 +176,7 @@
             flex-direction: column;
         }
 
-        #desktop.visible {
-            display: flex;
-        }
+        #desktop.visible { display: flex; }
 
         .desktop-area {
             flex: 1;
@@ -220,13 +200,8 @@
             transition: background 0.15s;
         }
 
-        .app-icon:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .app-icon:active {
-            background: rgba(255, 255, 255, 0.18);
-        }
+        .app-icon:hover { background: rgba(255, 255, 255, 0.1); }
+        .app-icon:active { background: rgba(255, 255, 255, 0.18); }
 
         .app-icon-img {
             width: 52px;
@@ -246,11 +221,7 @@
             line-height: 1.3;
         }
 
-        /* App badge */
-        .app-icon-wrap {
-            position: relative;
-            display: inline-block;
-        }
+        .app-icon-wrap { position: relative; display: inline-block; }
 
         .app-badge {
             position: absolute;
@@ -268,11 +239,8 @@
             justify-content: center;
         }
 
-        .app-badge.visible {
-            display: flex;
-        }
+        .app-badge.visible { display: flex; }
 
-        /* Taskbar */
         #taskbar {
             height: 40px;
             background: rgba(15, 18, 40, 0.92);
@@ -291,7 +259,6 @@
             font-family: var(--mono);
         }
 
-        /* Wifi icon */
         .wifi-btn {
             background: none;
             border: none;
@@ -305,12 +272,8 @@
             transition: color 0.2s, background 0.2s;
         }
 
-        .wifi-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
+        .wifi-btn:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
 
-        /* ========== MODALS ========== */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -325,10 +288,7 @@
             transition: opacity 0.2s;
         }
 
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
 
         .modal-box {
             background: #1e1e2e;
@@ -341,9 +301,7 @@
             transition: transform 0.2s;
         }
 
-        .modal-overlay.open .modal-box {
-            transform: scale(1);
-        }
+        .modal-overlay.open .modal-box { transform: scale(1); }
 
         .modal-title {
             font-size: 16px;
@@ -372,14 +330,8 @@
             transition: border-color 0.2s;
         }
 
-        .modal-input:focus {
-            border-color: var(--accent);
-        }
-
-        .modal-input.error {
-            border-color: var(--danger);
-            animation: shake 0.3s ease;
-        }
+        .modal-input:focus { border-color: var(--accent); }
+        .modal-input.error { border-color: var(--danger); animation: shake 0.3s ease; }
 
         .modal-err {
             color: var(--danger);
@@ -388,11 +340,7 @@
             margin-bottom: 10px;
         }
 
-        .modal-btns {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
+        .modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
 
         .btn-primary {
             padding: 9px 20px;
@@ -407,9 +355,7 @@
             transition: opacity 0.2s;
         }
 
-        .btn-primary:hover {
-            opacity: 0.88;
-        }
+        .btn-primary:hover { opacity: 0.88; }
 
         .btn-secondary {
             padding: 9px 20px;
@@ -423,14 +369,9 @@
             transition: background 0.2s;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.14);
-        }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.14); }
 
-        /* ========== MESSAGING APP ========== */
-        #msgModal {
-            z-index: 300;
-        }
+        #msgModal { z-index: 300; }
 
         .msg-app {
             width: min(900px, 95vw);
@@ -454,11 +395,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .msg-titlebar-title {
-            color: #fff;
-            font-weight: 700;
-            font-size: 14px;
-        }
+        .msg-titlebar-title { color: #fff; font-weight: 700; font-size: 14px; }
 
         .msg-close-btn {
             background: none;
@@ -470,17 +407,10 @@
             transition: color 0.2s;
         }
 
-        .msg-close-btn:hover {
-            color: var(--danger);
-        }
+        .msg-close-btn:hover { color: var(--danger); }
 
-        .msg-body {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
+        .msg-body { display: flex; flex: 1; overflow: hidden; }
 
-        /* Sidebar */
         .msg-sidebar {
             width: 260px;
             background: #1a1b2e;
@@ -506,25 +436,16 @@
             transition: color 0.2s, border-color 0.2s;
         }
 
-        .sidebar-tab.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
+        .sidebar-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-        .msg-list,
-        .contact-list {
+        .msg-list, .contact-list {
             flex: 1;
             overflow-y: auto;
             padding: 8px 0;
         }
 
-        .msg-list::-webkit-scrollbar,
-        .contact-list::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .msg-list::-webkit-scrollbar-thumb,
-        .contact-list::-webkit-scrollbar-thumb {
+        .msg-list::-webkit-scrollbar, .contact-list::-webkit-scrollbar { width: 4px; }
+        .msg-list::-webkit-scrollbar-thumb, .contact-list::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
         }
@@ -540,14 +461,8 @@
             margin: 2px 6px;
         }
 
-        .conv-item:hover,
-        .conv-item.active {
-            background: rgba(255, 255, 255, 0.07);
-        }
-
-        .conv-item.active {
-            background: rgba(79, 195, 247, 0.12);
-        }
+        .conv-item:hover, .conv-item.active { background: rgba(255, 255, 255, 0.07); }
+        .conv-item.active { background: rgba(79, 195, 247, 0.12); }
 
         .conv-avatar {
             width: 42px;
@@ -562,17 +477,8 @@
             color: #fff;
         }
 
-        .conv-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .conv-name {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
+        .conv-info { flex: 1; min-width: 0; }
+        .conv-name { color: #fff; font-size: 14px; font-weight: 500; }
         .conv-preview {
             color: rgba(255, 255, 255, 0.4);
             font-size: 12px;
@@ -581,7 +487,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Contact list */
         .contact-item {
             display: flex;
             align-items: center;
@@ -593,9 +498,7 @@
             margin: 2px 6px;
         }
 
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.07);
-        }
+        .contact-item:hover { background: rgba(255, 255, 255, 0.07); }
 
         .contact-avatar {
             width: 42px;
@@ -610,24 +513,10 @@
             color: #fff;
         }
 
-        .contact-name {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-        }
+        .contact-name { color: #fff; font-size: 14px; font-weight: 500; }
+        .contact-handle { color: rgba(255, 255, 255, 0.4); font-size: 12px; }
 
-        .contact-handle {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 12px;
-        }
-
-        /* Chat area */
-        .msg-chat {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+        .msg-chat { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 
         .chat-header {
             background: #1a1b2e;
@@ -650,16 +539,8 @@
             color: #fff;
         }
 
-        .chat-header-name {
-            color: #fff;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .chat-header-status {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 12px;
-        }
+        .chat-header-name { color: #fff; font-weight: 700; font-size: 14px; }
+        .chat-header-status { color: rgba(255, 255, 255, 0.4); font-size: 12px; }
 
         .chat-messages {
             flex: 1;
@@ -670,14 +551,8 @@
             gap: 10px;
         }
 
-        .chat-messages::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-        }
+        .chat-messages::-webkit-scrollbar { width: 4px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
 
         .msg-empty {
             flex: 1;
@@ -690,9 +565,7 @@
             gap: 10px;
         }
 
-        .msg-empty-icon {
-            font-size: 40px;
-        }
+        .msg-empty-icon { font-size: 40px; }
 
         .bubble {
             max-width: 65%;
@@ -717,12 +590,7 @@
             border-bottom-left-radius: 4px;
         }
 
-        .bubble-time {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 4px;
-            text-align: right;
-        }
+        .bubble-time { font-size: 10px; color: rgba(255, 255, 255, 0.4); margin-top: 4px; text-align: right; }
 
         .bubble img {
             max-width: 220px;
@@ -742,9 +610,7 @@
             align-items: center;
         }
 
-        .typing-indicator.visible {
-            display: flex;
-        }
+        .typing-indicator.visible { display: flex; }
 
         .typing-dot {
             width: 7px;
@@ -754,25 +620,12 @@
             animation: typingBounce 1.2s infinite;
         }
 
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes typingBounce {
-
-            0%,
-            60%,
-            100% {
-                transform: translateY(0)
-            }
-
-            30% {
-                transform: translateY(-5px)
-            }
+            0%, 60%, 100% { transform: translateY(0) }
+            30% { transform: translateY(-5px) }
         }
 
         .chat-footer {
@@ -800,9 +653,7 @@
             transition: border-color 0.2s;
         }
 
-        .chat-input:focus {
-            border-color: rgba(79, 195, 247, 0.4);
-        }
+        .chat-input:focus { border-color: rgba(79, 195, 247, 0.4); }
 
         .chat-send-btn {
             width: 40px;
@@ -820,12 +671,8 @@
             transition: opacity 0.2s, transform 0.1s;
         }
 
-        .chat-send-btn:hover {
-            opacity: 0.88;
-            transform: scale(1.05);
-        }
+        .chat-send-btn:hover { opacity: 0.88; transform: scale(1.05); }
 
-        /* No contact selected */
         .chat-placeholder {
             flex: 1;
             display: flex;
@@ -836,14 +683,9 @@
             gap: 12px;
         }
 
-        .chat-placeholder-icon {
-            font-size: 50px;
-        }
+        .chat-placeholder-icon { font-size: 50px; }
 
-        /* ========== APP LOCK ========== */
-        #appLockModal .modal-box {
-            text-align: center;
-        }
+        #appLockModal .modal-box { text-align: center; }
 
         .pin-display {
             display: flex;
@@ -860,10 +702,7 @@
             transition: background 0.15s, border-color 0.15s;
         }
 
-        .pin-dot.filled {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
+        .pin-dot.filled { background: var(--accent); border-color: var(--accent); }
 
         .pin-keypad {
             display: grid;
@@ -887,21 +726,11 @@
             justify-content: center;
         }
 
-        .pin-key:hover {
-            background: rgba(255, 255, 255, 0.14);
-        }
+        .pin-key:hover { background: rgba(255, 255, 255, 0.14); }
+        .pin-key:active { background: rgba(79, 195, 247, 0.25); }
 
-        .pin-key:active {
-            background: rgba(79, 195, 247, 0.25);
-        }
+        .pin-err { color: var(--danger); font-size: 12px; min-height: 16px; }
 
-        .pin-err {
-            color: var(--danger);
-            font-size: 12px;
-            min-height: 16px;
-        }
-
-        /* ========== NOTIFICATION ========== */
         #notification {
             position: fixed;
             bottom: 56px;
@@ -917,45 +746,17 @@
             animation: slideUp 0.3s ease;
         }
 
-        #notification.visible {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
+        #notification.visible { display: flex; gap: 12px; align-items: flex-start; }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1
-            }
+            from { transform: translateY(20px); opacity: 0 }
+            to { transform: translateY(0); opacity: 1 }
         }
 
-        .notif-icon {
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        .notif-body {
-            flex: 1;
-        }
-
-        .notif-title {
-            color: #fff;
-            font-weight: 700;
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
-
-        .notif-text {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 12px;
-            line-height: 1.4;
-        }
+        .notif-icon { font-size: 22px; flex-shrink: 0; }
+        .notif-body { flex: 1; }
+        .notif-title { color: #fff; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+        .notif-text { color: rgba(255, 255, 255, 0.7); font-size: 12px; line-height: 1.4; }
 
         .notif-close {
             background: none;
@@ -969,29 +770,41 @@
             margin-top: -2px;
         }
 
-        .notif-close:hover {
-            color: #fff;
+        .notif-close:hover { color: #fff; }
+
+        /* Toast notification for secret key presses */
+        #keyToast {
+            position: fixed;
+            bottom: 56px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(30,30,50,0.95);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 8px 18px;
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            font-family: var(--mono);
+            z-index: 600;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        #keyToast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
-        /* ========== ERROR MODAL (no wifi) ========== */
-        #noWifiModal {
-            z-index: 400;
-        }
-
-        /* SVG icons */
-        .icon-wifi-off {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .icon-wifi-on {
-            color: var(--green);
-        }
+        #noWifiModal { z-index: 400; }
+        .icon-wifi-off { color: rgba(255, 255, 255, 0.5); }
+        .icon-wifi-on { color: var(--green); }
     </style>
 </head>
 
 <body>
 
-    <!-- ====== LOCK SCREEN ====== -->
+    <!-- LOCK SCREEN -->
     <div id="lockScreen">
         <div class="lock-time" id="lockClock">00:00</div>
         <div class="lock-date" id="lockDate"></div>
@@ -999,15 +812,14 @@
             <div class="avatar-img">👤</div>
             <div class="avatar-name">Utilisateur</div>
             <div class="lock-form">
-                <input type="password" class="lock-input" id="lockInput" placeholder="Mot de passe"
-                    autocomplete="off" />
+                <input type="password" class="lock-input" id="lockInput" placeholder="Mot de passe" autocomplete="off" />
                 <div class="lock-error" id="lockError"></div>
                 <button class="lock-btn" onclick="checkLock()">Déverrouiller →</button>
             </div>
         </div>
     </div>
 
-    <!-- ====== DESKTOP ====== -->
+    <!-- DESKTOP -->
     <div id="desktop">
         <div class="desktop-area">
             <div class="app-icon-wrap">
@@ -1020,7 +832,6 @@
         <div id="taskbar">
             <span class="taskbar-time" id="taskbarClock">00:00</span>
             <button class="wifi-btn" id="wifiBtn" onclick="openWifiModal()" title="WiFi">
-                <!-- Wifi OFF -->
                 <svg id="wifiOff" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="icon-wifi-off">
@@ -1032,7 +843,6 @@
                     <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
                     <circle cx="12" cy="20" r="1" fill="currentColor" />
                 </svg>
-                <!-- Wifi ON -->
                 <svg id="wifiOn" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="icon-wifi-on" style="display:none">
@@ -1045,7 +855,7 @@
         </div>
     </div>
 
-    <!-- ====== WIFI MODAL ====== -->
+    <!-- WIFI MODAL -->
     <div class="modal-overlay" id="wifiModal">
         <div class="modal-box">
             <div class="modal-title">🛜 Connexion WiFi</div>
@@ -1059,7 +869,7 @@
         </div>
     </div>
 
-    <!-- ====== APP LOCK MODAL ====== -->
+    <!-- APP LOCK MODAL -->
     <div class="modal-overlay" id="appLockModal">
         <div class="modal-box" style="min-width:280px; max-width:280px;">
             <div class="modal-title">🔐 Messagerie</div>
@@ -1085,13 +895,12 @@
                 <button class="pin-key" onclick="pinPress('9')">9</button>
                 <button class="pin-key" onclick="pinPress('back')" style="font-size:16px">⌫</button>
                 <button class="pin-key" onclick="pinPress('0')">0</button>
-                <button class="pin-key" onclick="closeModal('appLockModal')"
-                    style="font-size:13px;color:rgba(255,255,255,0.5)">✕</button>
+                <button class="pin-key" onclick="closeModal('appLockModal')" style="font-size:13px;color:rgba(255,255,255,0.5)">✕</button>
             </div>
         </div>
     </div>
 
-    <!-- ====== MESSAGING APP MODAL ====== -->
+    <!-- MESSAGING APP MODAL -->
     <div class="modal-overlay" id="msgModal">
         <div class="msg-app">
             <div class="msg-titlebar">
@@ -1099,18 +908,14 @@
                 <button class="msg-close-btn" onclick="closeModal('msgModal')">✕</button>
             </div>
             <div class="msg-body">
-                <!-- Sidebar -->
                 <div class="msg-sidebar">
                     <div class="msg-sidebar-tabs">
                         <div class="sidebar-tab active" id="tabConvs" onclick="switchTab('convs')">Discussions</div>
                         <div class="sidebar-tab" id="tabContacts" onclick="switchTab('contacts')">Contacts</div>
                     </div>
-                    <!-- Conversations list -->
                     <div class="msg-list" id="convList"></div>
-                    <!-- Contacts list -->
                     <div class="contact-list" id="contactList" style="display:none"></div>
                 </div>
-                <!-- Chat zone -->
                 <div class="msg-chat" id="msgChat">
                     <div class="chat-placeholder" id="chatPlaceholder">
                         <div class="chat-placeholder-icon">💬</div>
@@ -1136,30 +941,30 @@
         </div>
     </div>
 
-    <!-- ====== NO WIFI ERROR MODAL ====== -->
+    <!-- NO WIFI ERROR MODAL -->
     <div class="modal-overlay" id="noWifiModal">
         <div class="modal-box" style="text-align:center; max-width:300px;">
             <div style="font-size:36px; margin-bottom:10px;">📵</div>
             <div class="modal-title">Connexion indisponible</div>
-            <div class="modal-sub" style="margin-bottom:20px;">Aucune connexion réseau active. Connecte-toi au WiFi
-                d'abord.</div>
+            <div class="modal-sub" style="margin-bottom:20px;">Aucune connexion réseau active. Connecte-toi au WiFi d'abord.</div>
             <div class="modal-btns" style="justify-content:center">
                 <button class="btn-primary" onclick="closeModal('noWifiModal')">OK</button>
             </div>
         </div>
     </div>
 
-    <!-- ====== NOTIFICATION ====== -->
-    <!-- <div id="notification">
+    <!-- NOTIFICATION -->
+    <div id="notification">
         <div class="notif-icon">🔑</div>
         <div class="notif-body">
             <div class="notif-title">Rappel</div>
-            <div class="notif-text">Hé oublie pas que t'as mis ta clé en G6, ce serait dommage de pas la retrouver encore
-                une fois"</div>
+            <div class="notif-text" id="notifText"></div>
         </div>
-        <button class="notif-close"
-            onclick="document.getElementById('notification').classList.remove('visible')">✕</button>
-    </div> -->
+        <button class="notif-close" onclick="document.getElementById('notification').classList.remove('visible')">✕</button>
+    </div>
+
+    <!-- Key press toast -->
+    <div id="keyToast"></div>
 
     <audio id="wifiAudio" src="./static/wifi.mp3" preload="auto"></audio>
 
@@ -1172,11 +977,11 @@
         // ===== CLOCK =====
         function updateClocks() {
             const now = new Date();
-            const t = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+            const tStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
             const d = now.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-            document.getElementById('lockClock').textContent = t;
+            document.getElementById('lockClock').textContent = tStr;
             document.getElementById('lockDate').textContent = d;
-            document.getElementById('taskbarClock').textContent = t;
+            document.getElementById('taskbarClock').textContent = tStr;
         }
         updateClocks();
         setInterval(updateClocks, 10000);
@@ -1207,36 +1012,32 @@
         function openModal(id) { document.getElementById(id).classList.add('open'); }
         function closeModal(id) {
             document.getElementById(id).classList.remove('open');
-            if (id === 'wifiModal') {
-                stopWifiSound();
-            }
+            if (id === 'wifiModal') stopWifiSound();
         }
 
         // ===== WIFI =====
         let wifiConnected = false;
-        let wifiTimer = null;
-
+        let wifiLoopTimer = null;
         const audio = document.getElementById('wifiAudio');
         audio.loop = false;
 
         function shouldPlayWifiSound() {
-            const modalOpen = document.getElementById('wifiModal').classList.contains('open');
-            return modalOpen && !wifiConnected;
+            return document.getElementById('wifiModal').classList.contains('open') && !wifiConnected;
         }
 
         function playWifiLoop() {
             if (!shouldPlayWifiSound()) return;
             audio.currentTime = 0;
-            audio.play().catch(() => { });
+            audio.play().catch(() => {});
             audio.onended = () => {
                 if (shouldPlayWifiSound()) {
-                    wifiTimer = setTimeout(playWifiLoop, 10000);
+                    wifiLoopTimer = setTimeout(playWifiLoop, 10000);
                 }
             };
         }
 
         function stopWifiSound() {
-            clearTimeout(wifiTimer);
+            clearTimeout(wifiLoopTimer);
             audio.pause();
             audio.currentTime = 0;
         }
@@ -1281,9 +1082,7 @@
                 pinValue += k;
             }
             updatePinDots();
-            if (pinValue.length === 6) {
-                setTimeout(checkPin, 100);
-            }
+            if (pinValue.length === 6) setTimeout(checkPin, 100);
         }
 
         function updatePinDots() {
@@ -1309,10 +1108,7 @@
         }
 
         function openAppLock() {
-            if (msgUnlocked) {
-                openModal('msgModal');
-                return;
-            }
+            if (msgUnlocked) { openModal('msgModal'); return; }
             pinValue = '';
             updatePinDots();
             openModal('appLockModal');
@@ -1320,29 +1116,103 @@
 
         // ===== NOTIFICATION TIMER =====
         let notifTimerStarted = false;
-        // function startNotifTimer() {
-        //     if (notifTimerStarted) return;
-        //     notifTimerStarted = true;
-        //     setTimeout(() => {
-        //         document.getElementById('notification').classList.add('visible');
-        //     }, 120000);
-        // }
+        function startNotifTimer() {
+            if (notifTimerStarted) return;
+            notifTimerStarted = true;
+            setTimeout(() => {
+                showNotification('🔑', 'Rappel', "Hé oublie pas que t'as mis ta clé en G6, ce serait dommage de pas la retrouver encore une fois\"");
+            }, 120000);
+        }
+
+        function showNotification(icon, title, text) {
+            document.querySelector('#notification .notif-icon').textContent = icon;
+            document.querySelector('#notification .notif-title').textContent = title;
+            document.getElementById('notifText').textContent = text;
+            const notif = document.getElementById('notification');
+            notif.style.display = 'none';
+            notif.classList.remove('visible');
+            // Force reflow for animation replay
+            void notif.offsetWidth;
+            notif.classList.add('visible');
+        }
+
+        // ===== SECRET KEY COMBOS — 3x 'a' or 3x 'z' =====
+        // Each combo: track presses with a timeout reset window
+        let aPressCount = 0;
+        let aResetTimer = null;
+        let contact2DelayedTriggered = false;
+
+        let zPressCount = 0;
+        let zResetTimer = null;
+        let contact6DelayedTriggered = false;
+
+        let keyToastTimer = null;
+
+        function showKeyToast(msg) {
+            const toast = document.getElementById('keyToast');
+            toast.textContent = msg;
+            toast.classList.add('visible');
+            clearTimeout(keyToastTimer);
+            keyToastTimer = setTimeout(() => toast.classList.remove('visible'), 1800);
+        }
+
+        function triggerDelayedMessage(contactId, message, label) {
+            // Show a subtle toast so the GM knows the timer started
+            showKeyToast(`⏱ Message ${label} dans 1 minute…`);
+            // Fire after 1 minute
+            setTimeout(() => {
+                conversations[contactId].push({ text: message, sent: false, time: nowTime() });
+                if (activeContactId === contactId) renderMessages();
+                renderConvList();
+                // Also show a notification
+                const c = CONTACTS.find(x => x.id === contactId);
+                showNotification('💬', c.name, message.length > 60 ? message.slice(0, 60) + '…' : message);
+            }, 60000);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            // Ignore if typing in an input/textarea
+            const tag = document.activeElement.tagName.toLowerCase();
+            if (tag === 'input' || tag === 'textarea') return;
+
+            const key = e.key.toLowerCase();
+
+            if (key === 'a') {
+                aPressCount++;
+                clearTimeout(aResetTimer);
+                aResetTimer = setTimeout(() => { aPressCount = 0; }, 1500);
+                if (aPressCount >= 3 && !contact2DelayedTriggered) {
+                    contact2DelayedTriggered = true;
+                    aPressCount = 0;
+                    const msg = "J'ai effacé la fameuse vidéo de ton téléphone, mais elle est dans les « supprimé récemment », il me fallait ton code alors elle y est encore. Mais pas de panique, tant que personne n'a ton code elle est protégée";
+                    triggerDelayedMessage(2, msg, 'Bélaid');
+                }
+            }
+
+            if (key === 'z') {
+                zPressCount++;
+                clearTimeout(zResetTimer);
+                zResetTimer = setTimeout(() => { zPressCount = 0; }, 1500);
+                if (zPressCount >= 3 && !contact6DelayedTriggered) {
+                    contact6DelayedTriggered = true;
+                    zPressCount = 0;
+                    const msg = "Le premier cadavre était trop marrant, on aurait dit qu'il pointait un truc en mourant 😊";
+                    triggerDelayedMessage(6, msg, 'Ondars');
+                }
+            }
+        });
 
         // ===== MESSAGING APP DATA =====
         const CONTACTS = [
-            { id: 1, name: 'M. ANDRE',         phone: '07 86 01 17 03', initial: 'A', color: '#e91e63',  reply: null },
-            { id: 2, name: 'M. BELAID',         phone: '06 56 83 48 02', initial: 'B', color: '#ff9800',  reply: null },
-            { id: 3, name: 'Mme COSTA',         phone: '07 90 63 42 51', initial: 'C', color: '#9c27b0',  reply: 'Ha Ha Ha mauvaise pioche les enfants !!! Vous vous êtes bien fait avoir !' },
-            { id: 4, name: 'Mme BOURIOT',       phone: '07 92 14 36 33', initial: 'D', color: '#2196f3',  reply: null, specialReply: true },
-            { id: 5, name: 'Amale AL ALAOUI',   phone: '06 77 43 81 39', initial: 'Am', color: '#00897b', reply: null },
-            { id: 6, name: 'M. ONDARS',         phone: '07 40 08 86 46', initial: 'O', color: '#c62828',  reply: 'Perdu ! Nullos' },
-            { id: 7, name: 'TECHNICIEN',        phone: '07 43 91 00 63', initial: 'T', color: '#546e7a',  reply: 'Ha non je viens pas vous sortir de là, sinon il va me tuer' },
+            { id: 1, name: 'M. ANDRE',       phone: '07 86 01 17 03', initial: 'A',  color: '#e91e63', reply: null },
+            { id: 2, name: 'M. BELAID',      phone: '06 56 83 48 02', initial: 'B',  color: '#ff9800', reply: null },
+            { id: 3, name: 'Mme COSTA',      phone: '07 90 63 42 51', initial: 'C',  color: '#9c27b0', reply: 'Ha Ha Ha mauvaise pioche les enfants !!! Vous vous êtes bien fait avoir !' },
+            { id: 4, name: 'Mme BOURIOT',    phone: '07 92 14 36 33', initial: 'D',  color: '#2196f3', reply: null, specialReply: true },
+            { id: 5, name: 'Amale AL ALAOUI',phone: '06 77 43 81 39', initial: 'Am', color: '#00897b', reply: null },
+            { id: 6, name: 'M. ONDARS',      phone: '07 40 08 86 46', initial: 'O',  color: '#c62828', reply: 'Perdu ! Nullos' },
+            { id: 7, name: 'TECHNICIEN',     phone: '07 43 91 00 63', initial: 'T',  color: '#546e7a', reply: 'Ha non je viens pas vous sortir de là, sinon il va me tuer' },
         ];
 
-        // Track which delayed messages have been sent
-        let contact2DelayedSent = false;
-        let contact6DelayedSent = false;
-        // Track if contact 4 special reply sent
         let contact4ReplySent = false;
 
         const BELAID_HISTORY = [
@@ -1365,18 +1235,17 @@
             { text: "Et au fait ! J'ai remis mis la clé de ton livre en D4, la perds pas cette fois", sent: false },
         ];
 
-        function t(h, m) { return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`; }
+        function tFmt(h, m) { return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`; }
         function randomTime() {
             const h = Math.floor(Math.random() * 3) + 9;
             const m = Math.floor(Math.random() * 60);
-            return t(h, m);
+            return tFmt(h, m);
         }
         function nowTime() {
             const now = new Date();
-            return t(now.getHours(), now.getMinutes());
+            return tFmt(now.getHours(), now.getMinutes());
         }
 
-        // conversations : { contactId: [{text, sent, time, isImg?}] }
         let conversations = {};
 
         function buildHistory(arr) {
@@ -1388,36 +1257,13 @@
         conversations[6] = buildHistory(ONDARS_HISTORY);
         conversations[7] = buildHistory(TECHNICIEN_HISTORY);
 
+        // Fix image flags
+        conversations[6].forEach((m, i) => {
+            if (m.text === '__IMG__') { m.isImg = true; m.text = ''; }
+        });
+
         let activeContactId = null;
         let currentTab = 'convs';
-
-        // ===== KEYBOARD SHORTCUTS ctrl+2 and ctrl+6 =====
-        document.addEventListener('keydown', function(e) {
-            if (e.shiftKey && e.key.toLowerCase() === 'a') {
-                e.preventDefault();
-                if (!contact2DelayedSent) {
-                    contact2DelayedSent = true;
-                    setTimeout(() => {
-                        const msg = "J'ai effacé la fameuse vidéo de ton téléphone, mais elle est dans les « supprimé récemment », il me fallait ton code alors elle y est encore. Mais pas de panique, tant que personne n'a ton code elle est protégée";
-                        conversations[2].push({ text: msg, sent: false, time: nowTime() });
-                        if (activeContactId === 2) renderMessages();
-                        renderConvList();
-                    }, 2 * 60 * 1000);
-                }
-            }
-            if (e.shiftKey && e.key.toLowerCase() === 'z') {
-                e.preventDefault();
-                if (!contact6DelayedSent) {
-                    contact6DelayedSent = true;
-                    setTimeout(() => {
-                        const msg = "Le premier cadavre était trop marrant, on aurait dit qu'il pointait un truc en mourant 😊";
-                        conversations[6].push({ text: msg, sent: false, time: nowTime() });
-                        if (activeContactId === 6) renderMessages();
-                        renderConvList();
-                    }, 2 * 60 * 1000);
-                }
-            }
-        });
 
         // ===== TABS =====
         function switchTab(tab) {
@@ -1430,7 +1276,6 @@
             else renderContactList();
         }
 
-        // ===== RENDER CONVERSATION LIST =====
         function renderConvList() {
             const list = document.getElementById('convList');
             list.innerHTML = '';
@@ -1454,7 +1299,6 @@
             });
         }
 
-        // ===== RENDER CONTACT LIST =====
         function renderContactList() {
             const list = document.getElementById('contactList');
             list.innerHTML = '';
@@ -1476,28 +1320,22 @@
             });
         }
 
-        // ===== SELECT CONTACT =====
         function selectContact(id) {
             activeContactId = id;
             renderConvList();
-
             const contact = CONTACTS.find(c => c.id === id);
             document.getElementById('chatPlaceholder').style.display = 'none';
             const chatActive = document.getElementById('chatActive');
             chatActive.style.display = 'flex';
-
-            // Header
             const ha = document.getElementById('chatHeaderAvatar');
             ha.style.background = contact.color;
             ha.textContent = contact.initial;
             document.getElementById('chatHeaderName').textContent = contact.name;
             document.getElementById('chatHeaderPhone').textContent = contact.phone;
-
             renderMessages();
             document.getElementById('chatInput').focus();
         }
 
-        // ===== RENDER MESSAGES =====
         function renderMessages() {
             const container = document.getElementById('chatMessages');
             const msgs = conversations[activeContactId] || [];
@@ -1521,7 +1359,7 @@
                 });
             }
 
-            // Typing indicator
+            // Typing indicator always appended at bottom
             const typing = document.createElement('div');
             typing.className = 'typing-indicator';
             typing.id = 'typingIndicator';
@@ -1532,13 +1370,12 @@
         }
 
         // ===== SEND MESSAGE =====
+        // Typing delay: 10 seconds
+        const TYPING_DELAY_MS = 10000;
+
         function sendMessage() {
             if (!activeContactId) return;
-
-            if (!wifiConnected) {
-                openModal('noWifiModal');
-                return;
-            }
+            if (!wifiConnected) { openModal('noWifiModal'); return; }
 
             const input = document.getElementById('chatInput');
             const text = input.value.trim();
@@ -1551,8 +1388,6 @@
             renderConvList();
 
             const contact = CONTACTS.find(c => c.id === activeContactId);
-
-            // Determine reply
             let replyText = null;
 
             if (contact.id === 4 && !contact4ReplySent) {
@@ -1565,20 +1400,26 @@
             }
 
             if (replyText) {
-                // Show typing
-                setTimeout(() => {
-                    const ti = document.getElementById('typingIndicator');
-                    if (ti) ti.classList.add('visible');
-                    const msgs = document.getElementById('chatMessages');
-                    if (msgs) msgs.scrollTop = msgs.scrollHeight;
-                }, 400);
+                const sendingToContactId = activeContactId;
 
-                const replyDelay = 1500 + Math.random() * 1000;
+                // Show typing indicator after a short initial delay
                 setTimeout(() => {
-                    conversations[activeContactId].push({ text: replyText, sent: false, time: nowTime() });
-                    if (activeContactId === contact.id) renderMessages();
+                    // Only show if still in same convo
+                    if (activeContactId === sendingToContactId) {
+                        const ti = document.getElementById('typingIndicator');
+                        if (ti) {
+                            ti.classList.add('visible');
+                            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+                        }
+                    }
+                }, 600);
+
+                // Send reply after TYPING_DELAY_MS
+                setTimeout(() => {
+                    conversations[sendingToContactId].push({ text: replyText, sent: false, time: nowTime() });
+                    if (activeContactId === sendingToContactId) renderMessages();
                     renderConvList();
-                }, replyDelay);
+                }, TYPING_DELAY_MS);
             }
         }
 
@@ -1589,16 +1430,8 @@
             }
         }
 
-        // Mark image messages
-        ONDARS_HISTORY.forEach((m, i) => {
-            if (m.text === '__IMG__') {
-                conversations[6][i].isImg = true;
-                conversations[6][i].text = '';
-            }
-        });
-
-        // ===== INIT MESSAGING =====
-        document.getElementById('msgModal').addEventListener('transitionend', function (e) {
+        // ===== INIT =====
+        document.getElementById('msgModal').addEventListener('transitionend', function(e) {
             if (this.classList.contains('open') && e.propertyName === 'opacity') {
                 renderConvList();
                 renderContactList();
@@ -1606,7 +1439,7 @@
         });
 
         const origOpenModal = openModal;
-        window.openModal = function (id) {
+        window.openModal = function(id) {
             origOpenModal(id);
             if (id === 'msgModal') {
                 renderConvList();
@@ -1614,13 +1447,11 @@
             }
         };
 
-        // Click outside modals to close small ones
         ['wifiModal', 'noWifiModal', 'appLockModal'].forEach(id => {
-            document.getElementById(id).addEventListener('click', function (e) {
+            document.getElementById(id).addEventListener('click', function(e) {
                 if (e.target === this) closeModal(id);
             });
         });
     </script>
 </body>
-
 </html>
